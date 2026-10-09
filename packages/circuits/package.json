@@ -1,0 +1,21 @@
+{
+  "name": "@stellar-veilyield/circuits",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsx scripts/compile-and-setup.ts",
+    "test": "vitest run",
+    "clean": "rimraf build artifacts"
+  },
+  "dependencies": {
+    "circomlibjs": "^0.1.7",
+    "snarkjs": "^0.7.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
