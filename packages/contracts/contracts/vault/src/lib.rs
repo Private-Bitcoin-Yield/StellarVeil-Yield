@@ -123,7 +123,7 @@ impl VaultContract {
 
         // 3. Store commitment leaf
         let leaf_count: u32 = env.storage().instance().get(&DataKey::LeafCount).unwrap_or(0);
-        env.storage().persistent().set(&DataKey::Leaf(&leaf_count), &commitment);
+        env.storage().persistent().set(&DataKey::Leaf(leaf_count), &commitment);
         let new_count = leaf_count + 1;
         env.storage().instance().set(&DataKey::LeafCount, &new_count);
 
@@ -131,7 +131,7 @@ impl VaultContract {
 
         // Extend storage TTLs
         env.storage().instance().extend_ttl(50_000, 100_000);
-        env.storage().persistent().extend_ttl(&DataKey::Leaf(&leaf_count), 50_000, 100_000);
+        env.storage().persistent().extend_ttl(&DataKey::Leaf(leaf_count), 50_000, 100_000);
 
         // 4. Emit Deposit event
         env.events().publish(
@@ -290,7 +290,7 @@ impl VaultContract {
     }
 
     pub fn get_leaf(env: Env, index: u32) -> Option<BytesN<32>> {
-        env.storage().persistent().get(&DataKey::Leaf(&index))
+        env.storage().persistent().get(&DataKey::Leaf(index))
     }
 
     pub fn get_current_epoch(env: Env) -> u64 {
