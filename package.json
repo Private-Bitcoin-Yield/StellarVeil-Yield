@@ -1,0 +1,24 @@
+{
+  "name": "stellar-veilyield-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "contracts:build": "cargo build --release --target wasm32-unknown-unknown",
+    "contracts:test": "cargo test",
+    "circuits:build": "pnpm --filter @stellar-veilyield/circuits build",
+    "deploy:testnet": "tsx scripts/deploy-testnet.ts",
+    "e2e:testnet": "tsx scripts/e2e-testnet.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.2"
+  },
+  "packageManager": "pnpm@10.34.5"
+}
